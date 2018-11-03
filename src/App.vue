@@ -1,29 +1,64 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+    <v-app>
+        <v-navigation-drawer v-model="drawer" fixed app>
+            <v-toolbar flat class="transparent">
+                <v-list class="pa-0">
+                    <v-list-tile avatar>
+                        <v-list-tile-avatar>
+                            <img src="/img/marc.png">
+                        </v-list-tile-avatar>
+
+                        <v-list-tile-content>
+                            <v-list-tile-title>Marc Arndt</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+
+                </v-list>
+            </v-toolbar>
+            <v-list class="pt-0" dense>
+                <v-divider></v-divider>
+
+                <v-list-tile
+                        v-for="item in items"
+                        :key="item.title"
+                        @click="$router.push(item.target)"
+                >
+                    <v-list-tile-action>
+                        <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-tile-action>
+
+                    <v-list-tile-content>
+                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+            </v-list>
+
+        </v-navigation-drawer>
+        <v-toolbar fixed app>
+            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-title>Marc Arndt</v-toolbar-title>
+        </v-toolbar>
+        <v-content>
+            <v-container fluid>
+                <router-view></router-view>
+            </v-container>
+        </v-content>
+    </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+export default {
+  name: "App",
+  components: {},
+  data() {
+    return {
+      items: [
+        { title: "Home", icon: "dashboard", target: "home" },
+        { title: "Career", icon: "question_answer", target: "career" }
+      ],
+      drawer: null
+      //
+    };
   }
-}
-</style>
+};
+</script>
