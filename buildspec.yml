@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    commands:
+    - npm install
+    finally:
+  pre_build:
+    commands:
+    - sed -i "s/BUILD_DATE/`date`/g" .env.production
+    finally:
+  build:
+    commands:
+    - npm run build
+    finally:
+  post_build:
+    commands:
+    - aws s3 sync --delete ./dist/ "s3://marcarndt.com"
+    finally:
+artifacts:
+  files:
+  - '**/*'
+  base-directory: dist
+cache:
+  paths:
+  - 'node_modules/**/*'
