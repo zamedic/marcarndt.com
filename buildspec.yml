@@ -6,7 +6,7 @@ phases:
     finally:
   pre_build:
     commands:
-    - sed -i "s/BUILD_DATE/`date`/g" .env.production
+    # - sed -i "s/BUILD_DATE/`date`/g" .env.production
     finally:
   build:
     commands:
