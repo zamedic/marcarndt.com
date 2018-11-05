@@ -54,7 +54,8 @@ export default {
     return {
       items: [
         { title: "Home", icon: "dashboard", target: "home" },
-        { title: "Career", icon: "question_answer", target: "career" }
+        { title: "Career", icon: "question_answer", target: "career" },
+        { title: "Skills", icon: "dashboard", target: "skills" }
       ],
       drawer: null
       //

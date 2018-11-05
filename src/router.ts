@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import BlogHome from '@/components/BlogHome.vue'
 import BlogPost from '@/components/BlogPost.vue'
 import career from '@/views/career.vue'
+import skills from '@/views/skills.vue'
 
 Vue.use(Router);
 
@@ -15,9 +16,9 @@ export default new Router({
             component: career
         },
         {
-            path: '/blog',
-            name: 'blog-home',
-            component: BlogHome
+            path: "/skills",
+            name: "Skills",
+            component: skills
         },
         {
             path: '/blog/:slug',
